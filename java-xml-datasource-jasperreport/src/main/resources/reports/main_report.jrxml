@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="main_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a7c49f12-6f17-407d-9640-16449dc920f8">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString language="xPath">
+		<![CDATA[/root/alunos/aluno]]>
+	</queryString>
+	<field name="ra" class="java.lang.String">
+		<fieldDescription><![CDATA[ra]]></fieldDescription>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<fieldDescription><![CDATA[nome]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[sexo]]></fieldDescription>
+	</field>
+	<field name="dataNascimento" class="java.lang.String">
+		<fieldDescription><![CDATA[dataNascimento]]></fieldDescription>
+	</field>
+	<field name="sigla" class="java.lang.String">
+		<fieldDescription><![CDATA[curso/sigla]]></fieldDescription>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<fieldDescription><![CDATA[curso/descricao]]></fieldDescription>
+	</field>
+	<field name="nome-coordenador" class="java.lang.String">
+		<fieldDescription><![CDATA[curso/coordenador/professor/nome]]></fieldDescription>
+	</field>
+	<field name="titulo-coordenador" class="java.lang.String">
+		<fieldDescription><![CDATA[curso/coordenador/professor/titulo]]></fieldDescription>
+	</field>
+	<field name="quantidade-alunos-regular" class="java.lang.Integer">
+		<fieldDescription><![CDATA[curso/quantidade-alunos-regular]]></fieldDescription>
+	</field>
+	<field name="quantidade-alunos-dp" class="java.lang.Integer">
+		<fieldDescription><![CDATA[curso/quantidade-alunos-dp]]></fieldDescription>
+	</field>
+	<variable name="TOTAL_QTDE_ALUNOS" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{quantidade-alunos-regular} + $F{quantidade-alunos-dp}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="555" height="20" uuid="e9c0b685-4bb7-42a7-a38b-a36abaa0e242"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório XML]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="100" height="20" uuid="e367152c-2cf2-4ff8-a483-51e88f5133cf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="5" width="100" height="20" uuid="07077573-54c4-4f9f-8873-3619024df85b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="5" width="100" height="20" uuid="90c4f688-17c7-47a3-a409-b5ae4e120fe8"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="5" width="100" height="20" uuid="8fff4c59-528c-4861-b7cd-e501ee43ca46"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Nasc.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="25" width="80" height="20" uuid="bb7925f7-1dbf-460d-99fe-1a6b4bb70c1a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Curso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="25" width="80" height="20" uuid="ea9fc05c-91e1-49fe-88e6-2f2d0865d75f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Coordenador]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="d54f7b9d-6261-40db-bbd1-5bad00e75889"/>
+				<textFieldExpression><![CDATA[$F{ra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="200" height="20" uuid="7d532fca-b83a-49b9-8b11-7594faea0c12"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="b38f631d-1bbf-438b-9549-1ac8d92a62af"/>
+				<textFieldExpression><![CDATA["M".equals($F{sexo}) ? "Masculino" : "Feminino"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="58ff62b1-05a5-4262-930b-5cfd81029e2a"/>
+				<textFieldExpression><![CDATA[$F{dataNascimento}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="20" y="60" width="480" height="25" uuid="5d5583ed-a2c5-4d6a-b75a-2dbf71755cb3"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).subDataSource("aluno/curso/disciplinas/disciplina")]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "sub_report1.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="20" y="20" width="50" height="20" uuid="13fdfe48-cff8-4b36-94df-c5c284d14278"/>
+				<textFieldExpression><![CDATA[$F{sigla}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="20" width="200" height="20" uuid="37bffef2-29b0-4da3-afca-27478efa14e7"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="20" width="230" height="20" uuid="2e3d241c-7be4-4046-a618-b2d2b06abf06"/>
+				<textFieldExpression><![CDATA[$F{nome-coordenador} + ", " + $F{titulo-coordenador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="40" width="280" height="20" uuid="72e36a18-7ed1-40ee-8051-a0b4470cd005"/>
+				<textFieldExpression><![CDATA[$F{quantidade-alunos-regular} + " + " + $F{quantidade-alunos-dp} + " = " + $V{TOTAL_QTDE_ALUNOS}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="40" width="80" height="20" uuid="77cd85b1-7a67-4855-89d6-9dd495002cf2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qtde. Alunos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement positionType="Float" x="20" y="85" width="480" height="25" uuid="eb5a05f3-ba76-45d7-ae71-8baf3cae607e"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).subDataSource("aluno/pesquisas/pesquisa")]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "sub_report2.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement positionType="Float" x="20" y="110" width="480" height="25" uuid="a4d9cab4-ed15-4002-a031-651073c1479f"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource) $P{REPORT_DATA_SOURCE}).subDataSource("aluno/notas/nota")]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "sub_report3.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="139" width="555" height="1" uuid="ed11e8b8-eb0d-4e39-900b-a8c9345dbf48"/>
+			</break>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>
